@@ -1,4 +1,4 @@
--- top paying jobs for data analysts with the skills
+-- top paying jobs for data analysts with the skills needed
 select 
     top_paying_jobs.*,
     skills 
@@ -14,7 +14,7 @@ from (
         from 
             job_postings_fact
         left join company_dim as company on company.company_id = job_postings_fact.company_id
-        where job_title = 'Data Analyst' and  
+        where job_title_short = 'Data Analyst' and  
               job_location = 'Anywhere' and 
               salary_year_avg is not null
         order by salary_year_avg desc
@@ -26,7 +26,7 @@ order by
     salary_year_avg desc
 
 
--- --------------------------------
+-- ==================================================================================
 with top_paying_jobs as (
     
         SELECT 
@@ -41,7 +41,7 @@ with top_paying_jobs as (
             job_postings_fact
         left join company_dim as company on company.company_id = job_postings_fact.company_id
         where 
-            job_title = 'Data Analyst' and 
+            job_title_short = 'Data Analyst' and 
             job_location = 'Anywhere' and 
             salary_year_avg is not null
         order by 
