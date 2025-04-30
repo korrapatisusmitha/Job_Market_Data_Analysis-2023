@@ -1,3 +1,22 @@
-/.vscode
-/csv_files
-/SQL_COURSE.session.sql
+# Ignore VSCode workspace settings
+.vscode/
+
+# Ignore compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore environment files
+.env
+config/.env
+
+# Ignore data files
+csv_files/
+
+# Ignore session or database dumps
+SQL_COURSE.session.sql
+
+# Ignore OS and editor-specific files
+.DS_Store
+Thumbs.db

@@ -1,3 +1,29 @@
+-- optimal skill and salary
+
+SELECT
+    skills_dim.skill_id,
+    skills_dim.skills,
+    count(skills_job_dim.job_id) as demand_count,
+    round(avg(job_postings_fact.salary_year_avg), 2) as average_salary
+from 
+    job_postings_fact
+inner join skills_job_dim on job_postings_fact.job_id = skills_job_dim.job_id
+inner join skills_dim on skills_job_dim.skill_id = skills_dim.skill_id
+where 
+    (job_title_short = %s or %s is null )
+    AND salary_year_avg is not null 
+    AND job_work_from_home = TRUE
+group by
+    skills_dim.skill_id
+HAVING
+    count(skills_job_dim.job_id) > 10
+order by 
+    average_salary DESC,
+    demand_count DESC
+limit 25;
+
+-- ================================================================================
+/*
 with skill_demand as (
     SELECT 
         skills.skill_id,
@@ -39,26 +65,8 @@ order BY
     avg_salary desc,
     demand_count desc
 limit 25;
+*/
 
--- ================================================================================
 
-SELECT
-    skills_dim.skill_id,
-    skills_dim.skills,
-    count(skills_job_dim.job_id) as demand_count,
-    round(avg(job_postings_fact.salary_year_avg), 2) as average_salary
-from job_postings_fact
-inner join skills_job_dim on job_postings_fact.job_id = skills_job_dim.job_id
-inner join skills_dim on skills_job_dim.skill_id = skills_dim.skill_id
-where 
-    job_title_short = 'Data Analyst' AND
-    salary_year_avg is not null AND
-    job_work_from_home = TRUE
-group by
-    skills_dim.skill_id
-HAVING
-    count(skills_job_dim.job_id) > 10
-order by 
-    average_salary DESC,
-    demand_count DESC
-limit 25;
+
+

@@ -1,4 +1,4 @@
--- High paying skill jobs for data analyst role wiht skills
+-- skill based on salary
 
 select 
     skills,
@@ -7,10 +7,10 @@ from job_postings_fact
 inner join skills_job_dim skills_job on job_postings_fact.job_id = skills_job.job_id
 inner join skills_dim skills on skills.skill_id = skills_job.skill_id
 where 
-    job_title_short = 'Data Analyst' AND  
-    salary_year_avg is not null
+    (job_title_short = %s or %s is null )
+    AND salary_year_avg is not null
 GROUP BY 
     skills
 order by 
     avg_salary DESC
-limit 25;
+-- limit 25;
