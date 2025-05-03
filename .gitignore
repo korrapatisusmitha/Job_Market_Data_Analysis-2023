@@ -20,3 +20,6 @@ SQL_COURSE.session.sql
 # Ignore OS and editor-specific files
 .DS_Store
 Thumbs.db
+
+# Ignore output files
+/.output

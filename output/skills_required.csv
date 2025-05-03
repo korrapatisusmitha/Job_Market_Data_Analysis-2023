@@ -1,0 +1,8 @@
+job_id,job_title,company_name,salary_year_avg,skills
+948291,Sr. Oracle Database Analyst,General Dynamics,375000.0,"sql, oracle, mysql, postgresql, sql server, vmware"
+1167238,"Senior Director, Data","Tinder, Inc.",375000.0,go
+1500195,"Senior Data Analyst / Quant Analyst 1 yr Fixed Contract $300,000 ...",Eden Smith Group,340000.0,"python, sql, spark, airflow, hadoop, yarn"
+131527,Senior Data Analyst,GradBay,240000.0,"python, aws, r, java"
+1433800,Senior Data Analyst,GradBay,240000.0,"python, java, r, aws"
+876823,Data Analytics - Senior Manager,Citi,235040.0,sql
+166936,"Senior Data Analyst, Autonomous Vehicle Infrastructure",NVIDIA,228000.0,"sql, python, pandas, jupyter"
