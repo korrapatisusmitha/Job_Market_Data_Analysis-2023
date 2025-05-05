@@ -27,5 +27,23 @@ def fetch_job_roles():
     except Exception as e:
         print(f"Error❌: {e}")
 
-if __name__ == "__main__":
-    fetch_job_roles()
+def get_valid_roles():
+    """Returns a set of valid roles for validation process"""
+
+    query = """
+        select distinct job_title_short
+        from job_postings_fact
+        where job_title_short is not null;
+    """
+    try:
+        conn = get_db_connection()
+        df = pd.read_sql_query(query, conn)
+        conn.close()
+
+        return df['job_title_short'].tolist()
+    except Exception as e:
+        print("❌ Error fetching valid roles: ", e)
+        return []
+    
+# if __name__ == "__main__":
+#     fetch_job_roles()

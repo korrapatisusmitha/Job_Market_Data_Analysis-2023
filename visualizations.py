@@ -99,20 +99,24 @@ def visualize_optimal_skills(df):
         print("⚠️ No data available for visualization.")
         return
 
+    # Sort by average salary descending
+    df_sorted = df.sort_values(by="average_salary", ascending=True)
+
     plt.figure(figsize=(12, 8))
-    sns.scatterplot(
-        data=df,
-        x="demand_count",
-        y="average_salary",
-        hue="skills",
-        size="demand_count",
-        palette="tab10",
-        legend=False
+    barplot = sns.barplot(
+        data=df_sorted,
+        x="average_salary",
+        y="skills",
+        palette="viridis"
     )
 
-    plt.title("Optimal Skills: Salary vs. Demand")
-    plt.xlabel("Demand Count")  
-    plt.ylabel("Average Salary")
+    # Annotate demand count
+    for index, row in df_sorted.iterrows():
+        barplot.text(row["average_salary"] + 500, index, f"{row['demand_count']} 📈", va='center', fontsize=9)
+
+    plt.title("💼 Optimal Skills: Highest Paying & In-Demand")
+    plt.xlabel("Average Salary (USD)")
+    plt.ylabel("Skills")
     plt.tight_layout()
     plt.savefig("output/optimal_skills.png")
     print("📊 Saved to output/optimal_skills.png")
