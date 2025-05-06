@@ -26,3 +26,5 @@ Thumbs.db
 # Ignore output folder
 output/
 
+# Ignore the gitignore script as well
+.gitignore
