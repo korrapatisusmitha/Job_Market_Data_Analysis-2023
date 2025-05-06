@@ -22,8 +22,7 @@ job-market-analysis/
 │   ├── optimal_skills.sql
 ├── output/
 │   └── (csv files and generated charts)
-├── requirements.txt
-├── sql_load 
+├── requirements.txt 
 ```
 # 📁 Dataset Source
 
