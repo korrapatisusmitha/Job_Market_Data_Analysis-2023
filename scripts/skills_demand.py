@@ -1,19 +1,21 @@
 import os
 import pandas as pd
-from db_utils import get_db_connection
-import argparse
+from scripts.db_utils import get_db_connection
+# import argparse
 import warnings
 
+# to surpass the warnings
 warnings.filterwarnings("ignore")
 
-os.makedirs("output", exist_ok = True )
+# to create the folder if not exists
+os.makedirs("output", exist_ok = True)
 
 def load_query(file_path):
     with open (file_path, 'r') as file:
         return file.read()
     
 def fetch_skills_demand(role = None):
-    query = load_query("queries/demand_skills.sql")
+    query = load_query("queries/skills_demand.sql")
     params = (role, role)
     try:
         conn = get_db_connection()

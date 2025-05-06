@@ -1,8 +1,8 @@
 import os
 import pandas as pd
-from db_utils import get_db_connection
+from scripts.db_utils import get_db_connection
 import warnings
-import argparse
+# import argparse
 
 # to surpass the warnings
 warnings.filterwarnings("ignore")

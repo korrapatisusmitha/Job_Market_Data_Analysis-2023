@@ -18,4 +18,4 @@ DB_CONFIG = {
     'password': os.getenv('DB_PASSWORD')
 }
 
-print("success👍")
+# print("success👍")

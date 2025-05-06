@@ -1,7 +1,7 @@
 import pandas as pd
 import os
-from db_utils import get_db_connection
-import argparse
+from scripts.db_utils import get_db_connection
+# import argparse
 import warnings 
 
 # to surpass the warnings

@@ -13,6 +13,8 @@ config/.env
 
 # Ignore data files
 csv_files/
+sql_load/
+
 
 # Ignore session or database dumps
 SQL_COURSE.session.sql
@@ -21,5 +23,6 @@ SQL_COURSE.session.sql
 .DS_Store
 Thumbs.db
 
-# Ignore output files
-/.output
+# Ignore output folder
+output/
+

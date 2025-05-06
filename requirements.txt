@@ -1,0 +1,8 @@
+python-dotenv
+pandas
+matplotlib
+seaborn
+sqlalchemy
+psycopg2-binary
+rapidfuzz
+argparse

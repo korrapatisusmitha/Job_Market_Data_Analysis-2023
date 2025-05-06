@@ -1,11 +1,13 @@
 import os
 import pandas as pd
-from db_utils import get_db_connection
-import argparse
+from scripts.db_utils import get_db_connection
+# import argparse
 import warnings
 
+# to surpass the warnings
 warnings.filterwarnings("ignore")
 
+# to create the folder if not exists
 os.makedirs("output", exist_ok = True)
 
 def load_query(file_path):

@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from db_utils import get_db_connection
+from scripts.db_utils import get_db_connection
 import warnings
 
 # surpass the warnings

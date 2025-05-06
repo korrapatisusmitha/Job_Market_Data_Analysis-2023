@@ -48,7 +48,7 @@ def visualize_skills_required(df):
     print("📊 Saved to output/skills_required.png")
     plt.show()
 
-def visualize_demand_skills(df):
+def visualize_skills_demand(df):
     if df.empty:
         print("⚠️ No data found for visualization.")
         return
@@ -67,8 +67,8 @@ def visualize_demand_skills(df):
     plt.xlabel("Job Postings Count")
     plt.ylabel("Skills")
     plt.tight_layout()
-    plt.savefig("output/demand_skills.png")
-    print("📊 Saved to output/demand_skills.png")
+    plt.savefig("output/skills_demand.png")
+    print("📊 Saved to output/skills_demand.png")
     plt.show()
 
 def visualize_skills_salary(df):
@@ -111,10 +111,10 @@ def visualize_optimal_skills(df):
     )
 
     # Annotate demand count
-    for index, row in df_sorted.iterrows():
-        barplot.text(row["average_salary"] + 500, index, f"{row['demand_count']} 📈", va='center', fontsize=9)
+    for i, (value, skill, demand) in enumerate(zip(df_sorted["average_salary"], df_sorted["skills"], df_sorted["demand_count"])):
+        plt.text(value + 1000, i, f"{demand} postings", va='center', fontsize=9, color='black')
 
-    plt.title("💼 Optimal Skills: Highest Paying & In-Demand")
+    plt.title("Optimal Skills: Highest Paying & In-Demand")
     plt.xlabel("Average Salary (USD)")
     plt.ylabel("Skills")
     plt.tight_layout()

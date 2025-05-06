@@ -1,15 +1,15 @@
 import pandas as pd
 from rapidfuzz import process
-from fetch_roles import fetch_job_roles, get_valid_roles
-from top_paying_jobs import fetch_top_paying_jobs
-from skills_required import fetch_skills_required
-from skills_demand import fetch_skills_demand
-from skills_salary_map import fetch_skills_salary_map
-from optimal_skills import fetch_optimal_skills
-from visualizations import(
+from scripts.fetch_roles import fetch_job_roles, get_valid_roles
+from scripts.top_paying_jobs import fetch_top_paying_jobs
+from scripts.skills_required import fetch_skills_required
+from scripts.skills_demand import fetch_skills_demand
+from scripts.skills_salary_map import fetch_skills_salary_map
+from scripts.optimal_skills import fetch_optimal_skills
+from scripts.visualizations import(
     visualize_top_jobs,
     visualize_skills_required,
-    visualize_demand_skills,
+    visualize_skills_demand,
     visualize_skills_salary,
     visualize_optimal_skills
 )
@@ -34,12 +34,13 @@ def main():
     # Fetch and display job roles
     fetch_job_roles()
     valid_roles = get_valid_roles()  # Fetch valid roles from DB
+    valid_roles_clean = [r.lower().strip() for r in valid_roles]
 
     # User input for job role
     role = input("\n💼 Enter the Job Role you're interested in (or press enter for all roles): ").strip()
     role_clean = role.lower().strip()
 
-    if role and role_clean not in valid_roles:
+    if role and role_clean not in valid_roles_clean:
         suggestion = suggest_closest_role(role_clean, valid_roles)
         if suggestion:
             print(f"\n🤔 Did you mean '{suggestion}'? Running with suggested role.")
@@ -75,7 +76,7 @@ def main():
     elif choice == '3':
         df = fetch_skills_demand(role_param)
         if prompt_visualization():
-            visualize_demand_skills(df)
+            visualize_skills_demand(df)
 
     elif choice == '4':
         df = fetch_skills_salary_map(role_param)
